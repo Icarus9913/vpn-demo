@@ -107,7 +107,7 @@ Here is the logs from machine `vpn1`
 	payloadLen=64
 }
 
-2019/12/07 09:04:11 receive from tunnel, send through raw socketIPFrame {
+2019/12/07 09:04:14 receive from tunnel, send through raw socketIPFrame {
 	version=4
 	headerLen=5
 	tos=0
@@ -143,7 +143,7 @@ Here is the logs from machine `vpn2`
 	payloadLen=64
 }
 
-2019/12/07 09:04:12 receive from tun, send through tunnel IPFrame {
+2019/12/07 09:04:13 receive from tun, send through tunnel IPFrame {
 	version=4
 	headerLen=5
 	tos=0
