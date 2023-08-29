@@ -1,0 +1,29 @@
+// ip route add table main 192.169.66.0/24 dev tun0
+Node1		tun0
+10.0.2.6	192.169.66.1
+
+
+// ip route add table main 192.169.66.0/24 dev tun0
+Node2		tun0
+10.0.2.7	192.169.66.2
+
+双方启动程序相互监听，每个节点上启动tcp服务器监听"0.0.0.0:9999"
+
+在Node1上执行"ping 192.169.66.2 -c 1"
+则，创建网络包SRC:192.169.66.1   DEST:192.169.66.2
+此时Node1程序发现tun0上有数据包，receive from tun device，就将数据发给了Node2的tcp服务器192.169.66.2:9999
+Node2的tcp服务器收到该数据包后(receive from tunnel)，然后通过socket发给了协议栈(receive from tun)，
+
+
+
+----
+apt update && apt install -y iproute2 iputils-ping net-tools
+
+
+docker run -itd --name vpn1 --cap-add=NET_ADMIN --device /dev/net/tun ubuntu /bin/bash
+./vpn 172.17.0.3 9999 192.169.66.1/24
+ping -c 1 192.169.66.2
+
+
+docker run -itd --name vpn2 --cap-add=NET_ADMIN --device /dev/net/tun ubuntu /bin/bash
+./vpn 172.17.0.2 9999 192.169.66.2/24
