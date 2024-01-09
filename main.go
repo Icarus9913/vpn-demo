@@ -219,7 +219,7 @@ func tcpListenerLoop() {
 
 			// send ip frame through raw socket
 			addr := syscall.SockaddrInet4{
-				Addr: tunnel.IPToArray4(frame.Target),
+				Addr: tunnel.IPToArray4(frame.Target), // tunnel addr
 			}
 			err = syscall.Sendto(fd, frame.ToBytes(), 0, &addr)
 			assert.AssertNil(err, "failed to send data through raw socket")

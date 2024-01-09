@@ -11,7 +11,7 @@ Node2		tun0
 
 在Node1上执行"ping 192.169.66.2 -c 1"
 则，创建网络包SRC:192.169.66.1   DEST:192.169.66.2
-此时Node1程序发现tun0上有数据包，receive from tun device，就将数据发给了Node2的tcp服务器192.169.66.2:9999
+此时Node1程序发现tun0上有数据包，receive from tun device，就将数据发给了Node2的tcp服务器10.0.2.7:9999
 Node2的tcp服务器收到该数据包后(receive from tunnel)，然后通过socket发给了协议栈(receive from tun)，
 
 
