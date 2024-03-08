@@ -27,3 +27,6 @@ ping -c 1 192.169.66.2
 
 docker run -itd --name vpn2 --cap-add=NET_ADMIN --device /dev/net/tun ubuntu /bin/bash
 ./vpn 172.17.0.2 9999 192.169.66.2/24
+
+
+Linux Tun/Tap 介绍: https://www.zhaohuabing.com/post/2020-02-24-linux-taptun/
